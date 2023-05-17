@@ -1,2 +1,2 @@
-# expense-controller
-Converta seus gastos em moeda estrangeira para BRL, armazene em uma tabela, edite ou exclua como quiser.
+# Expense Controller
+## Em pleno funcionamento, porém está sem estilização, próximos dias atualizarei com o CSS.
