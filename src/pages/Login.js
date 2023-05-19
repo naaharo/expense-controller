@@ -1,6 +1,6 @@
 import React from 'react';
+import '../css/Login.css'
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeEmail } from '../actions';
 
@@ -51,36 +51,43 @@ class Login extends React.Component {
 
     return (
       <div>
-        <form>
-          <label htmlFor="email">
-            E-mail:
+        <header id="loginHeader">
+          <h1>Expense Controller</h1>
+          <h3>Organize suas despesas internacionais</h3>
+        </header>
+
+        <form id="login">
+          <div className="form-floating mb-3">
             <input
               type="email"
+              className="form-control"
               id="email"
-              onChange={ this.verifyEmail }
-              data-testid="email-input"
+              placeholder="usuario@exemplo.com"
+              onChange={this.verifyEmail}
             />
-          </label>
+            <label htmlFor="email" className="form-label">Email</label>
+          </div>
 
-          <label htmlFor="password">
-            Senha:
+          <div className="form-floating">
             <input
               type="password"
               id="password"
-              onChange={ this.verifyPassword }
-              data-testid="password-input"
+              className="form-control"
+              placeholder="Senha"
+              onChange={this.verifyPassword}
             />
-          </label>
+            <label htmlFor="password" className="form-label">Senha</label>
+          </div>
 
-          <Link to="/carteira">
-            <button
-              type="button"
-              onClick={ () => dispatchEmail(emailValue) }
-              disabled={ disableSubmit }
-            >
-              Entrar
-            </button>
-          </Link>
+          { disableSubmit
+            ? <a className="btn btn-secondary disabled btn-lg" role="button" aria-disabled="true">Entrar</a>
+            : <a className="btn btn-success btn-lg"
+                href="/carteira"
+                role="button"
+                onClick={() => dispatchEmail(emailValue)}>
+                Entrar
+              </a>
+          }
         </form>
       </div>
     );
