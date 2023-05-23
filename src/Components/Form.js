@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/Form.css'
 import { connect } from 'react-redux';
 import {
   fetchCurrenciesCode,
@@ -91,7 +92,6 @@ class Form extends React.Component {
             type="text"
             id="value"
             value={ value }
-            data-testid="value-input"
             onChange={ this.handleChange }
           />
         </label>
@@ -100,7 +100,6 @@ class Form extends React.Component {
           Moeda:
           <select
             id="currency"
-            data-testid="currency-input"
             onChange={ this.handleChange }
           >
             { getCurrencies
@@ -108,11 +107,17 @@ class Form extends React.Component {
           </select>
         </label>
 
+        {/* <div className="dropdown">
+          <ul className="dropdown-menu">
+            { getCurrencies
+              .map((currency, index) => <li key={index}> <button type="button" className="dropdown-item">{ currency }</button></li>)}
+          </ul>
+        </div> */}
+
         <label htmlFor="method">
           Método de Pagamento:
           <select
             id="method"
-            data-testid="method-input"
             onChange={ this.handleChange }
           >
             <option>Dinheiro</option>
@@ -125,7 +130,6 @@ class Form extends React.Component {
           Categoria:
           <select
             id="tag"
-            data-testid="tag-input"
             onChange={ this.handleChange }
           >
             <option>Alimentação</option>
@@ -142,7 +146,6 @@ class Form extends React.Component {
             type="text"
             id="description"
             value={ description }
-            data-testid="description-input"
             onChange={ this.handleChange }
           />
         </label>
@@ -150,6 +153,7 @@ class Form extends React.Component {
         { getEdit ? (
           <button
             type="button"
+            className="btn btn-warning"
             onClick={ this.editFormInfos }
           >
             Editar despesa
@@ -158,6 +162,7 @@ class Form extends React.Component {
           : (
             <button
               type="button"
+              className="btn btn-info"
               onClick={ this.saveFormInfos }
             >
               Adicionar despesa
