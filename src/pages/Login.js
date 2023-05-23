@@ -80,7 +80,7 @@ class Login extends React.Component {
             <label htmlFor="password" className="form-label">Senha</label>
           </div>
 
-          <Link to="/carteira">
+          {/* <Link to="/carteira">
             { disableSubmit
               ? <span className="btn btn-secondary disabled btn-lg" role="button" aria-disabled="true">Entrar</span>
               : <span className="btn btn-success btn-lg"
@@ -89,7 +89,16 @@ class Login extends React.Component {
                   Entrar
                 </span>
             }
-          </Link>
+          </Link> */}
+
+          {disableSubmit
+            ? <button type="submit" className="btn btn-secondary disabled btn-lg" disabled>Entrar</button>
+            : <Link to="/carteira">
+              <button type="submit" className="btn btn-success btn-lg" onClick={() => dispatchEmail(emailValue)}>
+                Entrar
+              </button>
+            </Link>
+          }
         </form>
       </div>
     );
