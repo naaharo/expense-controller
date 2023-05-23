@@ -8,7 +8,7 @@ class Header extends React.Component {
     return (
       <header>
         <h2>{ getEmail }</h2>
-        <p data-testid="total-field">
+        <p>
           { getExpenses.map((expense) => (
             expense.value * expense.exchangeRates[expense.currency].ask
           )).reduce((a, b) => a + b, 0).toFixed(2) }

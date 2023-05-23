@@ -1,6 +1,7 @@
 import React from 'react';
 import '../css/Login.css'
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { changeEmail } from '../actions';
 
@@ -79,15 +80,16 @@ class Login extends React.Component {
             <label htmlFor="password" className="form-label">Senha</label>
           </div>
 
-          { disableSubmit
-            ? <a className="btn btn-secondary disabled btn-lg" href="/carteira" role="button" aria-disabled="true">Entrar</a>
-            : <a className="btn btn-success btn-lg"
-                href="/carteira"
-                role="button"
-                onClick={() => dispatchEmail(emailValue)}>
-                Entrar
-              </a>
-          }
+          <Link to="/carteira">
+            { disableSubmit
+              ? <span className="btn btn-secondary disabled btn-lg" role="button" aria-disabled="true">Entrar</span>
+              : <span className="btn btn-success btn-lg"
+                  role="button"
+                  onClick={() => dispatchEmail(emailValue)}>
+                  Entrar
+                </span>
+            }
+          </Link>
         </form>
       </div>
     );
