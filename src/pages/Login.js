@@ -80,7 +80,7 @@ class Login extends React.Component {
           </div>
 
           { disableSubmit
-            ? <a className="btn btn-secondary disabled btn-lg" role="button" aria-disabled="true">Entrar</a>
+            ? <a className="btn btn-secondary disabled btn-lg" href="/carteira" role="button" aria-disabled="true">Entrar</a>
             : <a className="btn btn-success btn-lg"
                 href="/carteira"
                 role="button"
