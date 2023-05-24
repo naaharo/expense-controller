@@ -31,7 +31,7 @@ class Form extends React.Component {
     currenciesToState();
   }
 
-  handleChange = ({ target: { value, id } }) => {
+  handleChange = ({ target: { id, value } }) => {
     const { expenseObj } = this.state;
     this.setState({ expenseObj: { ...expenseObj, [id]: value } });
   }
@@ -85,87 +85,70 @@ class Form extends React.Component {
     const { getCurrencies, getEdit } = this.props;
 
     return (
-      <form>
-        <label htmlFor="value">
-          Valor:
+      <form id="walletForm">
+        <div className="input-group value">
+          <label className="input-group-text" htmlFor="value">Valor</label>
+          <input type="text" className="form-control" aria-label="Amount" id="value" value={value} onChange={this.handleChange}/>
+        </div>
+
+        <div className="input-group curr">
+          <label className="input-group-text" htmlFor="currency">Moeda</label>
+          <select className="form-select" id="currency" onChange={this.handleChange}>
+          { getCurrencies
+              .map((curr, index) => <option key={index} value={curr}>{curr}</option>)}
+          </select>
+        </div>
+
+        <div className="input-group method">
+          <label className="input-group-text" htmlFor="method">Método</label>
+          <select className="form-select" id="method" onChange={this.handleChange}>
+            <option value="Dinheiro">Dinheiro</option>
+            <option value="Crédito">Crédito</option>
+            <option value="Débito">Débito</option>
+          </select>
+        </div>
+
+        <div className="input-group tag">
+          <label className="input-group-text" htmlFor="tag">Categoria</label>
+          <select className="form-select" id="tag" onChange={this.handleChange}>
+            <option value="Alimentação">Alimentação</option>
+            <option value="Lazer">Lazer</option>
+            <option value="Trabalho">Trabalho</option>
+            <option value="Transporte">Transporte</option>
+            <option value="Saúde">Saúde</option>
+          </select>
+        </div>
+
+        <div className="input-group descrip">
+          <label className="input-group-text" htmlFor="description">Descrição</label>
           <input
             type="text"
-            id="value"
-            value={ value }
-            onChange={ this.handleChange }
-          />
-        </label>
-
-        <label htmlFor="currency">
-          Moeda:
-          <select
-            id="currency"
-            onChange={ this.handleChange }
-          >
-            { getCurrencies
-              .map((currency, index) => <option key={ index }>{ currency }</option>)}
-          </select>
-        </label>
-
-        {/* <div className="dropdown">
-          <ul className="dropdown-menu">
-            { getCurrencies
-              .map((currency, index) => <li key={index}> <button type="button" className="dropdown-item">{ currency }</button></li>)}
-          </ul>
-        </div> */}
-
-        <label htmlFor="method">
-          Método de Pagamento:
-          <select
-            id="method"
-            onChange={ this.handleChange }
-          >
-            <option>Dinheiro</option>
-            <option>Cartão de crédito</option>
-            <option>Cartão de débito</option>
-          </select>
-        </label>
-
-        <label htmlFor="tag">
-          Categoria:
-          <select
-            id="tag"
-            onChange={ this.handleChange }
-          >
-            <option>Alimentação</option>
-            <option>Lazer</option>
-            <option>Trabalho</option>
-            <option>Transporte</option>
-            <option>Saúde</option>
-          </select>
-        </label>
-
-        <label htmlFor="description">
-          Descrição:
-          <input
-            type="text"
+            className="form-control"
+            aria-label="Description"
             id="description"
-            value={ description }
-            onChange={ this.handleChange }
+            value={description}
+            onChange={this.handleChange}
           />
-        </label>
+        </div>
 
         { getEdit ? (
           <button
             type="button"
             className="btn btn-warning"
+            id="formBtn"
             onClick={ this.editFormInfos }
           >
-            Editar despesa
+            Editar Despesa
           </button>
         )
           : (
             <button
               type="button"
               className="btn btn-info"
+              id="formBtn"
               onClick={ this.saveFormInfos }
             >
-              Adicionar despesa
+              Adicionar Despesa
             </button>
           ) }
       </form>

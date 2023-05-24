@@ -81,9 +81,9 @@ class Login extends React.Component {
           </div>
 
           {disableSubmit
-            ? <button type="submit" className="btn btn-secondary disabled btn-lg" disabled>Entrar</button>
+            ? <button type="submit" className="btn btn-secondary disabled btn-lg loginBtn" disabled>Entrar</button>
             : <Link to="/carteira">
-              <button type="submit" className="btn btn-success btn-lg" onClick={() => dispatchEmail(emailValue)}>
+              <button type="submit" className="btn btn-success btn-lg loginBtn" onClick={() => dispatchEmail(emailValue)}>
                 Entrar
               </button>
             </Link>
