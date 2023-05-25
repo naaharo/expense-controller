@@ -1,0 +1,14 @@
+.walletHeader {
+  padding: 10px 30% 5px;
+  margin: 30px 0 20px;
+  background-color: rgb(206, 206, 206);
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  row-gap: 20px;
+}
+
+.headerMain {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}

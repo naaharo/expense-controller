@@ -1,19 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/Header.css'
 import { connect } from 'react-redux';
 
 class Header extends React.Component {
   render() {
     const { getEmail, getExpenses } = this.props;
     return (
-      <header>
-        <h2>{ getEmail }</h2>
-        <p>
-          { getExpenses.map((expense) => (
-            expense.value * expense.exchangeRates[expense.currency].ask
-          )).reduce((a, b) => a + b, 0).toFixed(2) }
-        </p>
-        <p>Câmbio Utilizado: BRL</p>
+      <header className="walletHeader">
+        <div className="headerMain">
+          <h1>Expense Controller</h1>
+          <h4>{getEmail}</h4>
+        </div>
+        <div className="brl"><h4>Câmbio Utilizado: BRL</h4></div>
+        <div className="total">
+          <h4> Total: {getExpenses.map((expense) => (
+              expense.value * expense.exchangeRates[expense.currency].ask
+            )).reduce((a, b) => a + b, 0).toFixed(2)}
+          </h4>
+        </div>
       </header>
     );
   }
