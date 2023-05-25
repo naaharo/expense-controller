@@ -1,0 +1,12 @@
+table {
+  text-align: center;
+}
+
+th, td {
+  vertical-align: middle;
+  display: table-cell;
+}
+
+td button {
+  margin: 0 5px;
+}

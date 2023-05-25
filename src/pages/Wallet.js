@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import '../css/Wallet.css'
 import { connect } from 'react-redux';
 import { deleteExpense, handleEdit } from '../actions';
 import Form from '../Components/Form';
@@ -28,21 +29,21 @@ class Wallet extends React.Component {
 
         <Form />
 
-        <table>
+        <table className="table table-striped table-bordered">
           <thead>
             <tr>
-              <th>Descrição</th>
-              <th>Tag</th>
-              <th>Método de pagamento</th>
-              <th>Valor</th>
-              <th>Moeda</th>
-              <th>Câmbio utilizado</th>
-              <th>Valor convertido</th>
-              <th>Moeda de conversão</th>
-              <th>Editar/Excluir</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Tag</th>
+              <th scope="col">Método de pagamento</th>
+              <th scope="col">Valor</th>
+              <th scope="col">Moeda</th>
+              <th scope="col">Câmbio utilizado</th>
+              <th scope="col">Valor convertido</th>
+              <th scope="col">Moeda de conversão</th>
+              <th scope="col">Editar/Excluir</th>
             </tr>
           </thead>
-          <tbody>
+          <tbody className="table-group-divider">
             {getExpenses.map((expense, index) => (
               <tr key={ `raw${index}` }>
                 <td>{ expense.description }</td>
@@ -65,14 +66,14 @@ class Wallet extends React.Component {
                 <td>
                   <button
                     type="button"
-                    data-testid="edit-btn"
+                    className="btn btn-warning btn-sm"
                     onClick={ () => changeEdit({ bool: true, id: expense.id }) }
                   >
                     Editar
                   </button>
                   <button
                     type="button"
-                    data-testid="delete-btn"
+                    className="btn btn-danger btn-sm"
                     id={ expense.id }
                     onClick={ this.deleteRow }
                   >
